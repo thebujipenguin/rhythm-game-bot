@@ -1,0 +1,9 @@
+{
+    "python.defaultInterpreterPath": "/Users/buji/.pyenv/versions/3.12.10/bin/python",
+    "python-envs.defaultEnvManager": "ms-python.python:pyenv",
+    "python-envs.pythonProjects": [],
+    "code-runner.executorMap": {
+        "python": "\"$pythonPath\" $fullFileName"
+    },
+    "code-runner.runInTerminal": true
+}
