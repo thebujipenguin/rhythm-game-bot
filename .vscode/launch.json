@@ -7,7 +7,7 @@
       "request": "launch",
       "program": "${workspaceFolder}/main.py",
       "console": "integratedTerminal",
-      "python": "/Users/buji/.pyenv/versions/3.12.10/bin/python"
+      "python": "/Users/buji/.pyenv/versions/3.11.9/bin/python"
     }
   ]
 }

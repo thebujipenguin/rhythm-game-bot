@@ -1,7 +1,5 @@
-import pyautogui #using this instead of win32apis
-import cv2
-import time
-import random 
+from pynput.keyboard import Controller
+import pyautogui #using this instead of win32api
 import keyboard
 
 #positions
@@ -13,7 +11,6 @@ import keyboard
 #TODO figure out logic for button presses and detection
 #TODO collect images/colors for open cv to detect
 # color code is :r 255 g 255 b 60
-#TODO figure out how the hell pyautogui even works
 
 def click(lane):
     if(lane == 1):
