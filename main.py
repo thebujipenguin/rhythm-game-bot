@@ -1,5 +1,4 @@
-from pyautogui import * #using this instead of win32api for general support, also since im on mac
-import pyautogui
+import pyautogui #using this instead of win32apis
 import cv2
 import time
 import random 
@@ -27,11 +26,11 @@ def click(lane):
         pyautogui.press("k")
 
 while not keyboard.is_pressed('q'): #to quit out of the bot use q
-    if pyautogui.pixel(493,731)[0] == (255,255,60):
+    if pyautogui.pixel(493,731) == (255,255,60):
         print('lane 1')
-    if pyautogui.pixel(643,731)[0] == (255,255,60):
+    if pyautogui.pixel(643,731) == (255,255,60):
         print('lane 2')
-    if pyautogui.pixel(793,731)[0] == (255,255,60):
+    if pyautogui.pixel(793,731) == (255,255,60):
         print('lane 3')
-    if pyautogui.pixel(945,731)[0] == (255,255,60):
+    if pyautogui.pixel(945,731) == (255,255,60):
         print('lane 4')
