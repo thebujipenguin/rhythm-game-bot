@@ -1,6 +1,6 @@
-from pynput.keyboard import Controller
-import pyautogui #using this instead of win32api
-import keyboard
+from pynput.keyboard import Controller #swapped it again
+from PIL import ImageGrab
+import time
 
 #positions
 #X:  493 Y:  731 RGB: (NaN, NaN, NaN)
@@ -12,22 +12,35 @@ import keyboard
 #TODO collect images/colors for open cv to detect
 # color code is :r 255 g 255 b 60
 
-def click(lane):
-    if(lane == 1):
-        pyautogui.press("d")
-    elif(lane == 2):
-        pyautogui.press("f")
-    elif(lane == 3):
-        pyautogui.press("j")
-    elif(lane == 4):
-        pyautogui.press("k")
+#initialize 
+kbd = Controller()
 
-while not keyboard.is_pressed('q'): #to quit out of the bot use q
-    if pyautogui.pixel(493,731) == (255,255,60):
-        print('lane 1')
-    if pyautogui.pixel(643,731) == (255,255,60):
-        print('lane 2')
-    if pyautogui.pixel(793,731) == (255,255,60):
-        print('lane 3')
-    if pyautogui.pixel(945,731) == (255,255,60):
-        print('lane 4')
+#list
+LANES = [
+    (493,731,'d'), # stands for lane # : (x coord, y coord, button)
+    (643,731,'f'),
+    (793,731,'j'),
+    (945,731,'k')
+]
+
+COLOR_TARGET = (255,255,60) # in (red, green, blue)
+
+def checkColor(rgb):
+    r,g,b=rgb[:3]
+    
+    #added tolerance here just in case
+    return(abs(r-COLOR_TARGET[0]) <12 and
+           abs(g-COLOR_TARGET[1]) <12 and
+           abs(b-COLOR_TARGET[2]) <12)
+
+while True: # who needs safeties lmao
+    img = ImageGrab.grab()
+    pixel = img.load()
+    
+    for x,y,key in LANES:
+        print(pixel[x,y])
+        if checkColor(pixel[x,y]):
+            print(f'pressed {key}')
+            kbd.press(key)
+            kbd.release(key)
+        time.sleep(0.1)
