@@ -17,10 +17,10 @@ kbd = Controller()
 
 #list
 LANES = [
-    (493,731,'d'), # stands for lane # : (x coord, y coord, button)
-    (643,731,'f'),
-    (793,731,'j'),
-    (945,731,'k')
+    (493,750,'d'), # stands for lane # : (x coord, y coord, button)
+    (643,750,'f'),
+    (793,750,'j'),
+    (945,750,'k')
 ]
 
 COLOR_TARGET = (255,255,60) # in (red, green, blue)
@@ -29,9 +29,9 @@ def checkColor(rgb):
     r,g,b=rgb[:3]
     
     #added tolerance here just in case
-    return(abs(r-COLOR_TARGET[0]) <12 and
-           abs(g-COLOR_TARGET[1]) <12 and
-           abs(b-COLOR_TARGET[2]) <12)
+    return(abs(r-COLOR_TARGET[0]) <50 and
+           abs(g-COLOR_TARGET[1]) <50 and
+           abs(b-COLOR_TARGET[2]) <50)
 
 while True: # who needs safeties lmao
     img = ImageGrab.grab()
@@ -43,4 +43,4 @@ while True: # who needs safeties lmao
             print(f'pressed {key}')
             kbd.press(key)
             kbd.release(key)
-        time.sleep(0.1)
+        time.sleep(0.001)
